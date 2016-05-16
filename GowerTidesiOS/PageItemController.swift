@@ -11,7 +11,12 @@ import UIKit
 class PageItemController: UIViewController {
     
     // MARK: Properties
-    @IBOutlet var label: UILabel!
+    @IBOutlet weak var dayLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var sunriseLabel: UILabel!
+    @IBOutlet weak var sunsetLabel: UILabel!
+    
+    
 
     // MARK: - Variables
     let dateFormatter = NSDateFormatter()
@@ -22,11 +27,18 @@ class PageItemController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let timeFormatter = NSDateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        timeFormatter.locale = NSLocale(localeIdentifier: "en_GB_POSIX")
+        
         let dateFormatter = NSDateFormatter()
-        dateFormatter.dateFormat = "h:m a"
+        dateFormatter.dateFormat = "MMM d, yyyy"
         dateFormatter.locale = NSLocale(localeIdentifier: "en_GB_POSIX")
         
-        label.text = dateFormatter.stringFromDate(day!.sunrise)
+        dayLabel.text = day!.getDayName(day!.date)
+        dateLabel.text = dateFormatter.stringFromDate(day!.date)
+        sunriseLabel.text = timeFormatter.stringFromDate(day!.sunrise)
+        sunsetLabel.text = timeFormatter.stringFromDate(day!.sunset)
     }
     
     func setInfo(day: Day){
