@@ -11,7 +11,7 @@ import SQLite
 
 class Day {
     
-    let date, sunrise, sunset: NSDate
+    var date, sunrise, sunset: NSDate
     let calendar = NSCalendar.currentCalendar()
     
     init(date: NSDate, cursor: Row){
@@ -22,6 +22,18 @@ class Day {
         self.date = date
         self.sunrise = Day.getDate(timeParseFormatter, cursor: cursor, key: "sunrise")
         self.sunset = Day.getDate(timeParseFormatter, cursor: cursor, key: "sunset")
+        
+        self.sunrise = normaliseDate(sunrise)
+        self.sunset = normaliseDate(sunset)
+    }
+    
+    func normaliseDate(testDate: NSDate) -> NSDate {
+        let timeCal = NSCalendar.currentCalendar()
+        let timeComponents = timeCal.components([.Hour,  .Minute, .Second], fromDate: testDate)
+        timeComponents.day = getDateInfo(self.date, type: "day")
+        timeComponents.month = getDateInfo(self.date, type: "month")
+        timeComponents.year = getDateInfo(self.date, type: "year")
+        return timeCal.dateFromComponents(timeComponents)!
     }
     
     func isToday() -> Bool {

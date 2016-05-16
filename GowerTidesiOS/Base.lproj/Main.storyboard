@@ -109,6 +109,15 @@
                                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="until" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1ZV-QH-38l">
+                                                        <rect key="frame" x="38" y="48" width="106" height="17"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="1Yw-zR-lw2"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <color key="textColor" red="1" green="0.43001305505488474" blue="0.42648338470436187" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
                                                 </subviews>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -118,6 +127,7 @@
                                                     <constraint firstItem="rTs-zg-27M" firstAttribute="top" secondItem="MmR-RG-RMD" secondAttribute="top" id="OoQ-wk-P0i"/>
                                                     <constraint firstItem="rTs-zg-27M" firstAttribute="leading" secondItem="shn-Gs-aBA" secondAttribute="trailing" constant="6" id="QNh-L4-fey"/>
                                                     <constraint firstItem="rTs-zg-27M" firstAttribute="leading" secondItem="84N-kK-cO9" secondAttribute="trailing" constant="4" id="WlS-aF-41w"/>
+                                                    <constraint firstAttribute="trailing" secondItem="1ZV-QH-38l" secondAttribute="trailing" id="fw4-XI-sra"/>
                                                     <constraint firstAttribute="trailing" secondItem="rTs-zg-27M" secondAttribute="trailing" id="iqx-wr-5nR"/>
                                                     <constraint firstItem="shn-Gs-aBA" firstAttribute="top" secondItem="84N-kK-cO9" secondAttribute="bottom" constant="3" id="ndB-em-3XY"/>
                                                 </constraints>
@@ -145,6 +155,7 @@
                         <outlet property="dayLabel" destination="2jX-XE-9E6" id="bwU-k7-QfA"/>
                         <outlet property="sunriseLabel" destination="EN4-l9-joT" id="cne-gk-k5W"/>
                         <outlet property="sunsetLabel" destination="shn-Gs-aBA" id="r1o-11-jZW"/>
+                        <outlet property="untilSunsetLabel" destination="1ZV-QH-38l" id="0Yo-uC-N7K"/>
                         <outlet property="view" destination="Dxa-Cv-Rlz" id="6tG-mC-ibm"/>
                     </connections>
                 </viewController>
