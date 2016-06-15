@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftCharts
 
 class PageItemController: UIViewController {
     
@@ -16,11 +17,13 @@ class PageItemController: UIViewController {
     @IBOutlet weak var sunriseLabel: UILabel!
     @IBOutlet weak var sunsetLabel: UILabel!
     @IBOutlet weak var untilSunsetLabel: UILabel!
+    @IBOutlet weak var graphView: UIView!
     
     // MARK: - Variables
     let dateFormatter = NSDateFormatter()
     var itemIndex: Int = 0
     var day: Day? = nil
+    var chart: LineChart? = nil
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -29,6 +32,7 @@ class PageItemController: UIViewController {
     }
     
     func updateUI(){
+        let today = NSDate()
         let timeFormatter = NSDateFormatter()
         timeFormatter.dateFormat = "HH:mm"
         timeFormatter.locale = NSLocale(localeIdentifier: "en_GB_POSIX")
@@ -43,7 +47,9 @@ class PageItemController: UIViewController {
         sunsetLabel.text = timeFormatter.stringFromDate(day!.sunset)
         
         if day!.isToday(){
-            if NSDate().compare(day!.sunrise) == NSComparisonResult.OrderedDescending{
+            print(today)
+            print(day!.sunset)
+            if today.compare(day!.sunset) == NSComparisonResult.OrderedDescending{
                 untilSunsetLabel.text = "Sun has set"
             }
             else{
@@ -53,13 +59,31 @@ class PageItemController: UIViewController {
                 if mins < 10{
                     minString = "0" + String(mins)
                 }
-                print("Sunset in " + String(hours) + ":" + minString)
-                untilSunsetLabel.text = "Sunset in " + String(hours) + ":" + minString
+                untilSunsetLabel.text = String(hours) + ":" + minString + " 'til sunset"
             }
         }
         else{
             untilSunsetLabel.hidden = true
         }
+        
+        let chartConfig = ChartConfigXY(
+            xAxisConfig: ChartAxisConfig(from: 0, to: 24, by: 4),
+            yAxisConfig: ChartAxisConfig(from: 0, to: 15, by: 5)
+        )
+        
+        
+        chart = LineChart(
+            frame: CGRectMake(0.0, 0.0, CGRectGetWidth(graphView.frame), CGRectGetHeight(graphView.frame)),
+            chartConfig: chartConfig,
+            xTitle: "Time (24 H)",
+            yTitle: "Tide height (m)",
+            lines: [
+                (chartPoints: [(2.0, 2.6), (4.2, 4.1), (7.3, 1.0), (8.1, 11.5), (14.0, 3.0)], color: UIColor.blueColor())
+            ]
+        )
+        
+        graphView.addSubview(chart!.view)
+        
     }
     
     func setInfo(day: Day){
