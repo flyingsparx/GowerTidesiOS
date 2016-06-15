@@ -49,7 +49,7 @@ class PageItemController: UIViewController {
         if day!.isToday(){
             print(today)
             print(day!.sunset)
-            if today.compare(day!.sunset) == NSComparisonResult.OrderedDescending{
+            if today.earlierDate(day!.sunset).isEqualToDate(day!.sunset){ // If sunset in past
                 untilSunsetLabel.text = "Sun has set"
             }
             else{

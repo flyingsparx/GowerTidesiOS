@@ -13,6 +13,7 @@ class Day {
     
     var date, sunrise, sunset: NSDate
     let calendar = NSCalendar.currentCalendar()
+    var tideEvents = [TideEvent]()
     
     init(date: NSDate, cursor: Row){
         let timeParseFormatter = NSDateFormatter()
@@ -20,8 +21,29 @@ class Day {
         timeParseFormatter.locale = NSLocale(localeIdentifier: "en_GB_POSIX")
         
         self.date = date
-        self.sunrise = Day.getDate(timeParseFormatter, cursor: cursor, key: "sunrise")
-        self.sunset = Day.getDate(timeParseFormatter, cursor: cursor, key: "sunset")
+        self.sunrise = Day.getDate(timeParseFormatter, cursor: cursor, key: "sunrise")!
+        self.sunset = Day.getDate(timeParseFormatter, cursor: cursor, key: "sunset")!
+        
+        let high1Time: NSDate? = Day.getDate(timeParseFormatter, cursor: cursor, key: "high1_time")
+        if (high1Time != nil){
+            tideEvents.append(TideEvent(day: self, type: "high", height: Day.getDouble(cursor, key: "high1_height")!, time: high1Time!))
+        }
+        let low1Time: NSDate? = Day.getDate(timeParseFormatter, cursor: cursor, key: "low1_time")
+        if (low1Time != nil){
+            tideEvents.append(TideEvent(day: self, type: "low", height: Day.getDouble(cursor, key: "low1_height")!, time: low1Time!))
+        }
+        let high2Time: NSDate? = Day.getDate(timeParseFormatter, cursor: cursor, key: "high2_time")
+        if (high2Time != nil){
+            tideEvents.append(TideEvent(day: self, type: "high", height: Day.getDouble(cursor, key: "high2_height")!, time: high2Time!))
+        }
+        let low2Time: NSDate? = Day.getDate(timeParseFormatter, cursor: cursor, key: "low2_time")
+        if (low2Time != nil){
+            tideEvents.append(TideEvent(day: self, type: "low", height: Day.getDouble(cursor, key: "low2_height")!, time: low2Time!))
+        }
+        let high3Time: NSDate? = Day.getDate(timeParseFormatter, cursor: cursor, key: "high3_time")
+        if (high3Time != nil){
+            tideEvents.append(TideEvent(day: self, type: "high", height: Day.getDouble(cursor, key: "high3_height")!, time: high3Time!))
+        }
         
         self.sunrise = normaliseDate(sunrise)
         self.sunset = normaliseDate(sunset)
@@ -83,10 +105,16 @@ class Day {
         return getDateInfoString(testDate, type: "day")
     }
 
-    private class func getDate(timeParseFormatter: NSDateFormatter, cursor: Row, key: String) -> NSDate {
-        let sunriseExp = Expression<String>(key)
-        let sunriseStr = cursor[sunriseExp].stringByReplacingOccurrencesOfString(" BST", withString: "")
-        return timeParseFormatter.dateFromString(sunriseStr)!
+    private class func getDate(timeParseFormatter: NSDateFormatter, cursor: Row, key: String) -> NSDate? {
+        let dateExp = Expression<String>(key)
+        let dateStr = cursor[dateExp].stringByReplacingOccurrencesOfString(" BST", withString: "")
+        print(dateStr)
+        return timeParseFormatter.dateFromString(dateStr)
     }
     
+    private class func getDouble(cursor: Row, key: String) -> Double? {
+        let doubleExp = Expression<String>(key)
+        let doubleStr = try cursor[doubleExp].stringByReplacingOccurrencesOfString("m", withString: "").stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        return try Double(doubleStr)!
+    }
 }

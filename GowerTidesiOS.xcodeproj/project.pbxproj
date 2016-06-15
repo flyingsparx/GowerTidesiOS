@@ -16,6 +16,7 @@
 		BE260E741CE53E220090F94F /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE260E711CE53E220090F94F /* Day.swift */; };
 		BE260E761CE53E220090F94F /* tides in Resources */ = {isa = PBXBuildFile; fileRef = BE260E731CE53E220090F94F /* tides */; };
 		BE260E7A1CEA3F6A0090F94F /* PageItemController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE260E791CEA3F6A0090F94F /* PageItemController.swift */; };
+		BEB6C0731D11EB75001F14C9 /* TideEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6C0721D11EB75001F14C9 /* TideEvent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		BE260E711CE53E220090F94F /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
 		BE260E731CE53E220090F94F /* tides */ = {isa = PBXFileReference; lastKnownFileType = file; path = tides; sourceTree = "<group>"; };
 		BE260E791CEA3F6A0090F94F /* PageItemController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageItemController.swift; sourceTree = "<group>"; };
+		BEB6C0721D11EB75001F14C9 /* TideEvent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TideEvent.swift; sourceTree = "<group>"; };
 		C149086934BC78757AFE8A74 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -93,6 +95,7 @@
 				BE260E661CE53C7A0090F94F /* Assets.xcassets */,
 				BE260E681CE53C7A0090F94F /* LaunchScreen.storyboard */,
 				BE260E6B1CE53C7A0090F94F /* Info.plist */,
+				BEB6C0721D11EB75001F14C9 /* TideEvent.swift */,
 			);
 			path = GowerTidesiOS;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEB6C0731D11EB75001F14C9 /* TideEvent.swift in Sources */,
 				BE260E621CE53C7A0090F94F /* ViewController.swift in Sources */,
 				BE260E601CE53C7A0090F94F /* AppDelegate.swift in Sources */,
 				BE260E741CE53E220090F94F /* Day.swift in Sources */,
