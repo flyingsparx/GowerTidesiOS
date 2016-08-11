@@ -64,15 +64,25 @@ class PageItemController: UIViewController {
             untilSunsetLabel.hidden = true
         }
         
-        
-        let chartConfig = ChartConfigXY(
-            xAxisConfig: ChartAxisConfig(from: 0, to: 24, by: 4),
-            yAxisConfig: ChartAxisConfig(from: 0, to: 15, by: 5)
-        )
+        var maxHeight = 0.0;
         var coordinates = [(Double, Double)]();
+        let lastTideYesterday = day!.yesterday!.tideEvents[(day!.yesterday?.tideEvents.endIndex)! - 1];
+        let firstTideTomorrow = day!.tomorrow!.tideEvents[0];
+        coordinates.append((0 - (24 - lastTideYesterday.getMinutes()), lastTideYesterday.height))
         for event in day!.tideEvents {
             coordinates.append((event.getMinutes(), event.height))
         }
+        coordinates.append((24 + firstTideTomorrow.getMinutes(), firstTideTomorrow.height))
+        for coord in coordinates {
+            
+            if (coord.1 > maxHeight){
+                maxHeight = coord.1 + 3
+            }
+        }
+        let chartConfig = ChartConfigXY(
+            xAxisConfig: ChartAxisConfig(from: 0, to: 24, by: 4),
+            yAxisConfig: ChartAxisConfig(from: 0, to: maxHeight, by: 2)
+        )
         chart = LineChart(
             frame: CGRectMake(0.0, 0.0, CGRectGetWidth(graphView.frame), CGRectGetHeight(graphView.frame)),
             chartConfig: chartConfig,

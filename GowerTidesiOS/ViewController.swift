@@ -38,12 +38,17 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
             days.append(day!);
             currentDate = currentDate.dateByAddingTimeInterval(singleDay)
         }
+        var i = 1
+        while i < days.count - 1 {
+            days[i].yesterday = days[i-1]
+            days[i].tomorrow = days[i+1]
+            i++
+        }
         
         pageViewController = self.storyboard!.instantiateViewControllerWithIdentifier("PageController") as? UIPageViewController
         pageViewController!.dataSource = self
         pageViewController!.setViewControllers([getItemController(14)!], direction: UIPageViewControllerNavigationDirection.Forward, animated: true, completion: nil)
         
-        print("here");
         addChildViewController(pageViewController!)
         self.view.addSubview(pageViewController!.view)
         pageViewController!.didMoveToParentViewController(self)

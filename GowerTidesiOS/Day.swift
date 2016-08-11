@@ -12,6 +12,7 @@ import SQLite
 class Day {
     
     var date, sunrise, sunset: NSDate
+    var yesterday, tomorrow: Day?
     let calendar = NSCalendar.currentCalendar()
     var tideEvents = [TideEvent]()
     
