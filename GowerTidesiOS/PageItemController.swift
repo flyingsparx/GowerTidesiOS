@@ -47,8 +47,6 @@ class PageItemController: UIViewController {
         sunsetLabel.text = timeFormatter.stringFromDate(day!.sunset)
         
         if day!.isToday(){
-            print(today)
-            print(day!.sunset)
             if today.earlierDate(day!.sunset).isEqualToDate(day!.sunset){ // If sunset in past
                 untilSunsetLabel.text = "Sun has set"
             }
@@ -66,19 +64,22 @@ class PageItemController: UIViewController {
             untilSunsetLabel.hidden = true
         }
         
+        
         let chartConfig = ChartConfigXY(
             xAxisConfig: ChartAxisConfig(from: 0, to: 24, by: 4),
             yAxisConfig: ChartAxisConfig(from: 0, to: 15, by: 5)
         )
-        
-        
+        var coordinates = [(Double, Double)]();
+        for event in day!.tideEvents {
+            coordinates.append((event.getMinutes(), event.height))
+        }
         chart = LineChart(
             frame: CGRectMake(0.0, 0.0, CGRectGetWidth(graphView.frame), CGRectGetHeight(graphView.frame)),
             chartConfig: chartConfig,
             xTitle: "Time (24 H)",
             yTitle: "Tide height (m)",
             lines: [
-                (chartPoints: [(2.0, 2.6), (4.2, 4.1), (7.3, 1.0), (8.1, 11.5), (14.0, 3.0)], color: UIColor.blueColor())
+                (chartPoints: coordinates, color: UIColor.blueColor())
             ]
         )
         

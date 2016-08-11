@@ -14,11 +14,19 @@ class TideEvent{
     var type: NSString
     var height: Double
     var time: NSDate
+    let calendar = NSCalendar.currentCalendar()
     
     init(day: Day, type: NSString, height: Double, time: NSDate){
         self.day = day
         self.type = type
         self.height = height
         self.time = time
+    }
+    
+    // Return number of hours (in double) of this tide event since midnight of this Day
+    func getMinutes() -> Double {
+        let hours = calendar.components(.Hour, fromDate: self.time).hour
+        let minutes = calendar.components(.Minute, fromDate: self.time).minute
+        return Double((hours * 60) + minutes) / 60;
     }
 }

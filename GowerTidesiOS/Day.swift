@@ -49,6 +49,7 @@ class Day {
         self.sunset = normaliseDate(sunset)
     }
     
+    // Change the input date (which contains only 'time') to have the day/month/year of this Day
     func normaliseDate(testDate: NSDate) -> NSDate {
         let timeCal = NSCalendar.currentCalendar()
         let timeComponents = timeCal.components([.Hour,  .Minute, .Second], fromDate: testDate)
@@ -58,18 +59,21 @@ class Day {
         return timeCal.dateFromComponents(timeComponents)!
     }
     
+    // Return true if this Day is today
     func isToday() -> Bool {
         let dateComponents = calendar.components([.Day, .Month, .Year], fromDate: self.date)
         let todayComponents = calendar.components([.Day, .Month, .Year], fromDate:  NSDate())
         return todayComponents.year == dateComponents.year && todayComponents.month == dateComponents.month && todayComponents.day == dateComponents.day
     }
     
+    // Return true if this Day is tomorrow
     func isTomorrow() -> Bool {
         let dateComponents = calendar.components([.Day, .Month, .Year], fromDate: self.date)
         let todayComponents = calendar.components([.Day, .Month, .Year], fromDate:  NSDate().dateByAddingTimeInterval(24*60*60))
         return todayComponents.year == dateComponents.year && todayComponents.month == dateComponents.month && todayComponents.day == dateComponents.day
     }
     
+    // Return a component (day/weekday/month/year) of input testDate
     func getDateInfo(testDate: NSDate, type: String) -> Int {
         switch type {
             case "day": return calendar.components(.Day, fromDate: testDate).day
@@ -81,6 +85,7 @@ class Day {
         return -1
     }
     
+    // Return a string representing month (Jan/Feb/etc.) or day (Mon/Tues/etc.) of input testDate
     func getDateInfoString(testDate: NSDate, type: String) -> String {
         let dateFormatter: NSDateFormatter = NSDateFormatter()
         switch type {
@@ -95,6 +100,7 @@ class Day {
         return ""
     }
     
+    // Return canonical string of day name of inputString (i.e. today/tomorrow/Mon/Tues/etc.)
     func getDayName(testDate: NSDate) -> String{
         if isToday(){
             return "Today"
@@ -105,16 +111,17 @@ class Day {
         return getDateInfoString(testDate, type: "day")
     }
 
+    // Get a date from a column in an input DB row cursor
     private class func getDate(timeParseFormatter: NSDateFormatter, cursor: Row, key: String) -> NSDate? {
         let dateExp = Expression<String>(key)
         let dateStr = cursor[dateExp].stringByReplacingOccurrencesOfString(" BST", withString: "")
-        print(dateStr)
         return timeParseFormatter.dateFromString(dateStr)
     }
     
+    // get a double from a column in an input DB row cursor
     private class func getDouble(cursor: Row, key: String) -> Double? {
         let doubleExp = Expression<String>(key)
-        let doubleStr = try cursor[doubleExp].stringByReplacingOccurrencesOfString("m", withString: "").stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-        return try Double(doubleStr)!
+        let doubleStr = cursor[doubleExp].stringByReplacingOccurrencesOfString("m", withString: "").stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        return Double(doubleStr)!
     }
 }
