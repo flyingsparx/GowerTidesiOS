@@ -74,7 +74,6 @@ class PageItemController: UIViewController {
         }
         coordinates.append((24 + firstTideTomorrow.getMinutes(), firstTideTomorrow.height))
         for coord in coordinates {
-            
             if (coord.1 > maxHeight){
                 maxHeight = coord.1 + 3
             }
@@ -83,14 +82,19 @@ class PageItemController: UIViewController {
             xAxisConfig: ChartAxisConfig(from: 0, to: 24, by: 4),
             yAxisConfig: ChartAxisConfig(from: 0, to: maxHeight, by: 2)
         )
+        var graphLines = [(chartPoints: coordinates, color: UIColor.blueColor())]
+        if ((day?.isToday()) == true){
+            let calendar = NSCalendar.currentCalendar()
+            let currentTime = NSDate()
+            let hour = Double(calendar.components(.Hour, fromDate: currentTime).hour)
+            graphLines.append((chartPoints: [(hour, 0), (hour, maxHeight)], color: UIColor.redColor()))
+        }
         chart = LineChart(
             frame: CGRectMake(0.0, 0.0, CGRectGetWidth(graphView.frame), CGRectGetHeight(graphView.frame)),
             chartConfig: chartConfig,
             xTitle: "Time (24 H)",
             yTitle: "Tide height (m)",
-            lines: [
-                (chartPoints: coordinates, color: UIColor.blueColor())
-            ]
+            lines: graphLines
         )
         
         graphView.addSubview(chart!.view)
