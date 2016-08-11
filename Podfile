@@ -3,5 +3,4 @@ xcodeproj 'GowerTidesiOS.xcodeproj'
 
 pod 'SQLite.swift', '~> 0.10.1'
 pod 'SwiftCharts', '~> 0.2'
-pod 'CorePlot', '~> 2.1'
-pod 'JBChartView'
+pod 'Charts'

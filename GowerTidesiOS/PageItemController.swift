@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SwiftCharts
+import Charts
 
 class PageItemController: UIViewController {
     
@@ -17,13 +17,13 @@ class PageItemController: UIViewController {
     @IBOutlet weak var sunriseLabel: UILabel!
     @IBOutlet weak var sunsetLabel: UILabel!
     @IBOutlet weak var untilSunsetLabel: UILabel!
-    @IBOutlet weak var graphView: UIView!
+    @IBOutlet weak var graphView: LineChartView!
+    
     
     // MARK: - Variables
     let dateFormatter = NSDateFormatter()
     var itemIndex: Int = 0
     var day: Day? = nil
-    var chart: LineChart? = nil
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
@@ -78,6 +78,11 @@ class PageItemController: UIViewController {
                 maxHeight = coord.1 + 3
             }
         }
+        
+        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
+        
+        /*
         let chartConfig = ChartConfigXY(
             xAxisConfig: ChartAxisConfig(from: 0, to: 24, by: 4),
             yAxisConfig: ChartAxisConfig(from: 0, to: maxHeight, by: 2)
@@ -97,7 +102,19 @@ class PageItemController: UIViewController {
             lines: graphLines
         )
         
-        graphView.addSubview(chart!.view)
+        graphView.addSubview(chart!.view)*/
+        
+
+        var dataEntries = [ChartDataEntry]()
+        var i = 0
+        while i < 12 {
+            dataEntries.append(ChartDataEntry(value: unitsSold[i], xIndex: i))
+            i++
+        }
+        let chartDataSet = LineChartDataSet(yVals: dataEntries, label: "Units Sold")
+        let chartData = LineChartData(xVals: months, dataSet: chartDataSet)
+        graphView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
+        graphView.data = chartData
         
     }
     
