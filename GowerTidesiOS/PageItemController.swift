@@ -64,23 +64,29 @@ class PageItemController: UIViewController {
             untilSunsetLabel.hidden = true
         }
         
-        var minsInDay = 60 * 24;
-        var maxHeight = 0.0;
+        
+        
+        let minsInDay = 60 * 24;
         var coordinates = [(Int, Double)]();
-        let lastTideYesterday = day!.yesterday!.tideEvents[(day!.yesterday?.tideEvents.endIndex)! - 1];
-        let firstTideTomorrow = day!.tomorrow!.tideEvents[0];
-        coordinates.append((0 - (minsInDay - lastTideYesterday.getMinutes()), lastTideYesterday.height))
+        if ((day!.yesterday) != nil){
+            let lastTideYesterday = day!.yesterday!.tideEvents[(day!.yesterday?.tideEvents.endIndex)! - 1];
+            coordinates.append((0 - (minsInDay - lastTideYesterday.getMinutes()), lastTideYesterday.height))
+        }
         for event in day!.tideEvents {
             coordinates.append((event.getMinutes(), event.height))
         }
-        coordinates.append((minsInDay + firstTideTomorrow.getMinutes(), firstTideTomorrow.height))
+        if ((day!.tomorrow) != nil){
+            let firstTideTomorrow = day!.tomorrow!.tideEvents[0];
+            coordinates.append((minsInDay + firstTideTomorrow.getMinutes(), firstTideTomorrow.height))
+        }
+        
+        var maxHeight = 0.0;
         for coord in coordinates {
             if (coord.1 > maxHeight){
                 maxHeight = coord.1 + 3
             }
         }
         
-
         var chartDataSets = [LineChartDataSet]()
         var tideData = [ChartDataEntry]()
         var xValues = [String]()
@@ -141,7 +147,6 @@ class PageItemController: UIViewController {
         sunsetDataSet.lineWidth = 0
         sunsetDataSet.fillColor = UIColor.lightGrayColor()
         chartDataSets.append(sunsetDataSet)
-        
         
         let chartData = LineChartData(xVals: xValues, dataSets: chartDataSets)
         

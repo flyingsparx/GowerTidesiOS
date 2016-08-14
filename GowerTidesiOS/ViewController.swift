@@ -38,11 +38,15 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
             days.append(day!);
             currentDate = currentDate.dateByAddingTimeInterval(singleDay)
         }
-        var i = 1
-        while i < days.count - 1 {
-            days[i].yesterday = days[i-1]
-            days[i].tomorrow = days[i+1]
-            i++
+        var i = 0
+        while i < days.count {
+            if (i > 0){
+                days[i].yesterday = days[i-1]
+            }
+            if (i < days.count - 1){
+                days[i].tomorrow = days[i+1]
+            }
+            i = i + 1
         }
         
         pageViewController = self.storyboard!.instantiateViewControllerWithIdentifier("PageController") as? UIPageViewController
