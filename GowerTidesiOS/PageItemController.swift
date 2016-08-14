@@ -79,8 +79,6 @@ class PageItemController: UIViewController {
             }
         }
         
-        let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-        let unitsSold = [20.0, 4.0, 6.0, 3.0, 12.0, 16.0, 4.0, 18.0, 2.0, 4.0, 5.0, 4.0]
         
         /*
         let chartConfig = ChartConfigXY(
@@ -105,16 +103,28 @@ class PageItemController: UIViewController {
         graphView.addSubview(chart!.view)*/
         
 
+    
         var dataEntries = [ChartDataEntry]()
+        var xValues = [Double]()
         var i = 0
-        while i < 12 {
-            dataEntries.append(ChartDataEntry(value: unitsSold[i], xIndex: i))
-            i++
+        while i < coordinates.count {
+            dataEntries.append(ChartDataEntry(value: coordinates[i].1, xIndex: i))
+            xValues.append(coordinates[i].0)
+            i = i + 1
         }
         let chartDataSet = LineChartDataSet(yVals: dataEntries, label: "Units Sold")
-        let chartData = LineChartData(xVals: months, dataSet: chartDataSet)
+        chartDataSet.setColor(UIColor.blueColor())
+        chartDataSet.circleRadius = 0
+        chartDataSet.drawCubicEnabled = true
+        let chartData = LineChartData(xVals: xValues, dataSet: chartDataSet)
+        
+        graphView.setVisibleXRangeMinimum(0)
+        graphView.setVisibleXRangeMaximum(24)
         graphView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
+        graphView.legend.enabled = false
+        graphView.xAxis.labelTextColor = UIColor.redColor()
         graphView.data = chartData
+        
         
     }
     
