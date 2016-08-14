@@ -64,68 +64,82 @@ class PageItemController: UIViewController {
             untilSunsetLabel.hidden = true
         }
         
+        var minsInDay = 60 * 24;
         var maxHeight = 0.0;
-        var coordinates = [(Double, Double)]();
+        var coordinates = [(Int, Double)]();
         let lastTideYesterday = day!.yesterday!.tideEvents[(day!.yesterday?.tideEvents.endIndex)! - 1];
         let firstTideTomorrow = day!.tomorrow!.tideEvents[0];
-        coordinates.append((0 - (24 - lastTideYesterday.getMinutes()), lastTideYesterday.height))
+        coordinates.append((0 - (minsInDay - lastTideYesterday.getMinutes()), lastTideYesterday.height))
         for event in day!.tideEvents {
             coordinates.append((event.getMinutes(), event.height))
         }
-        coordinates.append((24 + firstTideTomorrow.getMinutes(), firstTideTomorrow.height))
+        coordinates.append((minsInDay + firstTideTomorrow.getMinutes(), firstTideTomorrow.height))
         for coord in coordinates {
             if (coord.1 > maxHeight){
                 maxHeight = coord.1 + 3
             }
         }
         
+
+        var chartDataSets = [LineChartDataSet]()
+        var tideData = [ChartDataEntry]()
+        var xValues = [String]()
+        var x = 0
+        while x < minsInDay {
+            xValues.append(String(x))
+            x = x + 1
+        }
+        var y = 0
+        while y < coordinates.count {
+            tideData.append(ChartDataEntry(value: coordinates[y].1, xIndex: Int(coordinates[y].0)))
+            y = y + 1
+        }
+        let tideDataSet = LineChartDataSet(yVals: tideData, label: "")
+        tideDataSet.setColor(UIColor.blueColor())
+        tideDataSet.drawFilledEnabled = true
+        tideDataSet.circleRadius = 0
+        tideDataSet.drawCubicEnabled = true
+        tideDataSet.axisDependency = ChartYAxis.AxisDependency.Left
+        tideDataSet.drawValuesEnabled = false
+        chartDataSets.append(tideDataSet)
         
-        /*
-        let chartConfig = ChartConfigXY(
-            xAxisConfig: ChartAxisConfig(from: 0, to: 24, by: 4),
-            yAxisConfig: ChartAxisConfig(from: 0, to: maxHeight, by: 2)
-        )
-        var graphLines = [(chartPoints: coordinates, color: UIColor.blueColor())]
         if ((day?.isToday()) == true){
+            var todayTimeData = [ChartDataEntry]()
             let calendar = NSCalendar.currentCalendar()
             let currentTime = NSDate()
-            let hour = Double(calendar.components(.Hour, fromDate: currentTime).hour)
-            graphLines.append((chartPoints: [(hour, 0), (hour, maxHeight)], color: UIColor.redColor()))
+            let hour = calendar.components(.Hour, fromDate: currentTime).hour
+            let minutes = calendar.components(.Minute, fromDate: currentTime).minute
+            let minsSinceMidnight = hour * 60 + minutes
+            todayTimeData.append(ChartDataEntry(value: 0, xIndex: minsSinceMidnight))
+            todayTimeData.append(ChartDataEntry(value: maxHeight, xIndex: minsSinceMidnight))
+            
+            let timeDataSet = LineChartDataSet(yVals: todayTimeData, label: "")
+            timeDataSet.setColor(UIColor.redColor())
+            timeDataSet.drawValuesEnabled = false
+            timeDataSet.circleRadius = 0
+            chartDataSets.append(timeDataSet)
         }
-        chart = LineChart(
-            frame: CGRectMake(0.0, 0.0, CGRectGetWidth(graphView.frame), CGRectGetHeight(graphView.frame)),
-            chartConfig: chartConfig,
-            xTitle: "Time (24 H)",
-            yTitle: "Tide height (m)",
-            lines: graphLines
-        )
+        let chartData = LineChartData(xVals: xValues, dataSets: chartDataSets)
         
-        graphView.addSubview(chart!.view)*/
+        graphView.rightAxis.enabled = false
+        graphView.leftAxis.drawLabelsEnabled = false
+        graphView.leftAxis.drawGridLinesEnabled = false
+        graphView.leftAxis.axisMinValue = 0
+        graphView.leftAxis.axisMaxValue = maxHeight
         
-
-    
-        var dataEntries = [ChartDataEntry]()
-        var xValues = [Double]()
-        var i = 0
-        while i < coordinates.count {
-            dataEntries.append(ChartDataEntry(value: coordinates[i].1, xIndex: i))
-            xValues.append(coordinates[i].0)
-            i = i + 1
-        }
-        let chartDataSet = LineChartDataSet(yVals: dataEntries, label: "Units Sold")
-        chartDataSet.setColor(UIColor.blueColor())
-        chartDataSet.circleRadius = 0
-        chartDataSet.drawCubicEnabled = true
-        let chartData = LineChartData(xVals: xValues, dataSet: chartDataSet)
-        
-        graphView.setVisibleXRangeMinimum(0)
-        graphView.setVisibleXRangeMaximum(24)
+        graphView.leftAxis.axisLineColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
         graphView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
+        
+        graphView.xAxis.drawLabelsEnabled = true
+        graphView.xAxis.labelPosition = .Bottom
         graphView.legend.enabled = false
-        graphView.xAxis.labelTextColor = UIColor.redColor()
+        graphView.descriptionText = ""
+        graphView.animate(yAxisDuration: 1, easingOption: .EaseOutQuad)
+        
+        graphView.xAxis.axisMinValue = 0
+        graphView.xAxis.axisMaxValue = Double(minsInDay)
+        
         graphView.data = chartData
-        
-        
     }
     
     func setInfo(day: Day){

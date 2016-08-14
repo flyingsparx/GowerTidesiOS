@@ -24,9 +24,9 @@ class TideEvent{
     }
     
     // Return number of hours (in double) of this tide event since midnight of this Day
-    func getMinutes() -> Double {
+    func getMinutes() -> Int {
         let hours = calendar.components(.Hour, fromDate: self.time).hour
         let minutes = calendar.components(.Minute, fromDate: self.time).minute
-        return Double((hours * 60) + minutes) / 60;
+        return (hours * 60) + minutes;
     }
 }
