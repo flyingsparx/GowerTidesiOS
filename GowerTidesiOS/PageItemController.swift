@@ -86,7 +86,7 @@ class PageItemController: UIViewController {
         var xValues = [String]()
         var x = 0
         while x < minsInDay {
-            xValues.append(String(x))
+            xValues.append(String(x/60) + ":00")
             x = x + 1
         }
         var y = 0
@@ -119,6 +119,30 @@ class PageItemController: UIViewController {
             timeDataSet.circleRadius = 0
             chartDataSets.append(timeDataSet)
         }
+        
+        var sunriseData = [ChartDataEntry]()
+        sunriseData.append(ChartDataEntry(value: maxHeight, xIndex: 0))
+        sunriseData.append(ChartDataEntry(value: maxHeight, xIndex: day!.getMinutes(day!.sunrise)))
+        let sunriseDataSet = LineChartDataSet(yVals: sunriseData, label: "")
+        sunriseDataSet.drawFilledEnabled = true
+        sunriseDataSet.drawCirclesEnabled = false
+        sunriseDataSet.drawValuesEnabled = false
+        sunriseDataSet.lineWidth = 0
+        sunriseDataSet.fillColor = UIColor.lightGrayColor()
+        chartDataSets.append(sunriseDataSet)
+
+        var sunsetData = [ChartDataEntry]()
+        sunsetData.append(ChartDataEntry(value: maxHeight, xIndex: day!.getMinutes(day!.sunset)))
+        sunsetData.append(ChartDataEntry(value: maxHeight, xIndex: minsInDay))
+        let sunsetDataSet = LineChartDataSet(yVals: sunsetData, label: "")
+        sunsetDataSet.drawFilledEnabled = true
+        sunsetDataSet.drawCirclesEnabled = false
+        sunsetDataSet.drawValuesEnabled = false
+        sunsetDataSet.lineWidth = 0
+        sunsetDataSet.fillColor = UIColor.lightGrayColor()
+        chartDataSets.append(sunsetDataSet)
+        
+        
         let chartData = LineChartData(xVals: xValues, dataSets: chartDataSets)
         
         graphView.rightAxis.enabled = false
@@ -126,6 +150,7 @@ class PageItemController: UIViewController {
         graphView.leftAxis.drawGridLinesEnabled = false
         graphView.leftAxis.axisMinValue = 0
         graphView.leftAxis.axisMaxValue = maxHeight
+        graphView.xAxis.setLabelsToSkip(4 * 60)
         
         graphView.leftAxis.axisLineColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
         graphView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)

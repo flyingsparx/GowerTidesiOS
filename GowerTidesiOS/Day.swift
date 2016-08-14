@@ -111,6 +111,13 @@ class Day {
         }
         return getDateInfoString(testDate, type: "day")
     }
+    
+    // Return number of minutes since midnight of input date
+    func getMinutes(testDate: NSDate) -> Int {
+        let hours = calendar.components(.Hour, fromDate: testDate).hour
+        let minutes = calendar.components(.Minute, fromDate: testDate).minute
+        return (hours * 60) + minutes;
+    }
 
     // Get a date from a column in an input DB row cursor
     private class func getDate(timeParseFormatter: NSDateFormatter, cursor: Row, key: String) -> NSDate? {
