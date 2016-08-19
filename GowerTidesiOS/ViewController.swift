@@ -9,7 +9,7 @@
 import UIKit
 import SQLite
 
-class ViewController: UIViewController, UIPageViewControllerDataSource {
+class ViewController: UINavigationController, UIPageViewControllerDataSource {
     
     // MARK: - Variables
     private var pageViewController: UIPageViewController?
@@ -141,6 +141,10 @@ class ViewController: UIViewController, UIPageViewControllerDataSource {
         }
         
         return nil
+    }
+    
+    @IBAction func myUnwindAction(unwindSegue: UIStoryboardSegue){
+        unwindSegue.perform()
     }
 
 }

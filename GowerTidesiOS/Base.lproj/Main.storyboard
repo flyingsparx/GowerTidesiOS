@@ -36,14 +36,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jX-XE-9E6">
-                                <rect key="frame" x="36" y="30" width="248" height="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jX-XE-9E6">
+                                <rect key="frame" x="36" y="28" width="248" height="32"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <color key="textColor" red="0.34456806282722519" green="0.34456806282722519" blue="0.34456806282722519" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8H-5y-hCA">
-                                <rect key="frame" x="36" y="67" width="248" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8H-5y-hCA">
+                                <rect key="frame" x="36" y="59" width="248" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -139,11 +139,16 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoDark" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nyk-bo-86e">
+                                <rect key="frame" x="292" y="28" width="22" height="22"/>
+                                <connections>
+                                    <segue destination="rWA-RO-LP3" kind="modal" modalTransitionStyle="coverVertical" id="RrB-M4-AV7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.85602094240000004" green="0.85602094240000004" blue="0.85602094240000004" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="A8H-5y-hCA" secondAttribute="trailing" constant="20" id="3tU-Eo-Gul"/>
-                            <constraint firstItem="2jX-XE-9E6" firstAttribute="top" secondItem="Z4X-bv-dbc" secondAttribute="bottom" constant="10" id="IpW-Gp-Q6U"/>
                             <constraint firstItem="A8H-5y-hCA" firstAttribute="leading" secondItem="Dxa-Cv-Rlz" secondAttribute="leadingMargin" constant="20" id="OgI-r4-xld"/>
                             <constraint firstItem="2jX-XE-9E6" firstAttribute="leading" secondItem="Dxa-Cv-Rlz" secondAttribute="leadingMargin" constant="20" id="bR7-Rx-bZ4"/>
                             <constraint firstItem="Mcv-n3-XX9" firstAttribute="top" secondItem="A8H-5y-hCA" secondAttribute="bottom" constant="10" id="hd3-Pa-Xjc"/>
@@ -172,6 +177,131 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ATb-KL-Eai" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="546" y="334"/>
+        </scene>
+        <!--About Gower Tides-->
+        <scene sceneID="e7e-mQ-gKp">
+            <objects>
+                <viewController title="About Gower Tides" id="rWA-RO-LP3" customClass="AboutViewController" customModule="GowerTidesiOS" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="8Zn-Ea-qFS"/>
+                        <viewControllerLayoutGuide type="bottom" id="Yse-W9-wCI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a4I-e8-B3z">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="About Gower Tides" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gon-xP-RH6">
+                                <rect key="frame" x="6" y="66" width="294" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="VERSION" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JtM-DA-QWU">
+                                <rect key="frame" x="20" y="103" width="122" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <color key="textColor" red="0.5358107003" green="0.5358107003" blue="0.5358107003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="LICENCE" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4Q-QJ-GAB">
+                                <rect key="frame" x="20" y="156" width="122" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <color key="textColor" red="0.5358107003" green="0.5358107003" blue="0.5358107003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="GNU General Public License (v3)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Vb-TC-E8G">
+                                <rect key="frame" x="20" y="175" width="250" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKv-7X-MGr">
+                                <rect key="frame" x="20" y="120" width="22" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="7" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7If-gr-5mD">
+                                <rect key="frame" x="19" y="196" width="281" height="96"/>
+                                <string key="text">Copyright 2016 Will Webberley. This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="DEVELOPER" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vvd-QJ-BzW">
+                                <rect key="frame" x="20" y="311" width="163" height="21"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                <color key="textColor" red="0.5358107003" green="0.5358107003" blue="0.5358107003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Will Webberley " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9B-5z-D1f">
+                                <rect key="frame" x="19" y="333" width="250" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cgh-XR-fv9">
+                                <rect key="frame" x="18" y="360" width="82" height="30"/>
+                                <color key="backgroundColor" red="0.86004990183246077" green="0.86004990183246077" blue="0.86004990183246077" alpha="0.55707003546099287" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Twitter"/>
+                                <connections>
+                                    <action selector="twitterClicked:" destination="rWA-RO-LP3" eventType="touchDown" id="Tac-pp-FNn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZd-HU-dkq">
+                                <rect key="frame" x="18" y="406" width="82" height="30"/>
+                                <color key="backgroundColor" red="0.86004990179999996" green="0.86004990179999996" blue="0.86004990179999996" alpha="0.5570700355" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Email"/>
+                                <connections>
+                                    <action selector="emailClicked:" destination="rWA-RO-LP3" eventType="touchDown" id="6qw-3y-WTs"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="@flyingSparx" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fVg-KB-VF2">
+                                <rect key="frame" x="108" y="366" width="135" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="will@flyingsparx.net" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XPh-EZ-5Yz">
+                                <rect key="frame" x="110" y="410" width="135" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CqB-Zg-Zdu">
+                                <rect key="frame" x="108" y="103" width="192" height="38"/>
+                                <color key="backgroundColor" red="0.86004990179999996" green="0.86004990179999996" blue="0.86004990179999996" alpha="0.5570700355" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Project source"/>
+                                <connections>
+                                    <action selector="sourceClicked:" destination="rWA-RO-LP3" eventType="touchDown" id="T6F-t2-Wqb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ftw-JL-JgW">
+                                <rect key="frame" x="221" y="282" width="79" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="See licence"/>
+                                <connections>
+                                    <action selector="licenceClicked:" destination="rWA-RO-LP3" eventType="touchDown" id="cS9-Rq-3Lp"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gt-Ie-PhJ">
+                                <rect key="frame" x="6" y="28" width="47" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="REa-eg-CVm" kind="unwind" unwindAction="myUnwindAction:" id="s26-UY-NBO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94328779450261779" green="0.94328779450261779" blue="0.94328779450261779" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zeW-7v-GWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="REa-eg-CVm" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="865" y="980"/>
         </scene>
     </scenes>
     <resources>
