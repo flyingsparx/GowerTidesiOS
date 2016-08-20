@@ -11,12 +11,12 @@ import Foundation
 class TideEvent{
     
     var day: Day
-    var type: NSString
+    var type: String
     var height: Double
     var time: NSDate
     let calendar = NSCalendar.currentCalendar()
     
-    init(day: Day, type: NSString, height: Double, time: NSDate){
+    init(day: Day, type: String, height: Double, time: NSDate){
         self.day = day
         self.type = type
         self.height = height

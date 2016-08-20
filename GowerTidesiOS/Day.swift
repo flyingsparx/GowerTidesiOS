@@ -27,23 +27,23 @@ class Day {
         
         let high1Time: NSDate? = Day.getDate(timeParseFormatter, cursor: cursor, key: "high1_time")
         if (high1Time != nil){
-            tideEvents.append(TideEvent(day: self, type: "high", height: Day.getDouble(cursor, key: "high1_height")!, time: high1Time!))
+            tideEvents.append(TideEvent(day: self, type: "high", height: Day.getDouble(cursor, key: "high1_height")!, time: normaliseDate(high1Time!)))
         }
         let low1Time: NSDate? = Day.getDate(timeParseFormatter, cursor: cursor, key: "low1_time")
         if (low1Time != nil){
-            tideEvents.append(TideEvent(day: self, type: "low", height: Day.getDouble(cursor, key: "low1_height")!, time: low1Time!))
+            tideEvents.append(TideEvent(day: self, type: "low", height: Day.getDouble(cursor, key: "low1_height")!, time: normaliseDate(low1Time!)))
         }
         let high2Time: NSDate? = Day.getDate(timeParseFormatter, cursor: cursor, key: "high2_time")
         if (high2Time != nil){
-            tideEvents.append(TideEvent(day: self, type: "high", height: Day.getDouble(cursor, key: "high2_height")!, time: high2Time!))
+            tideEvents.append(TideEvent(day: self, type: "high", height: Day.getDouble(cursor, key: "high2_height")!, time: normaliseDate(high2Time!)))
         }
         let low2Time: NSDate? = Day.getDate(timeParseFormatter, cursor: cursor, key: "low2_time")
         if (low2Time != nil){
-            tideEvents.append(TideEvent(day: self, type: "low", height: Day.getDouble(cursor, key: "low2_height")!, time: low2Time!))
+            tideEvents.append(TideEvent(day: self, type: "low", height: Day.getDouble(cursor, key: "low2_height")!, time: normaliseDate(low2Time!)))
         }
         let high3Time: NSDate? = Day.getDate(timeParseFormatter, cursor: cursor, key: "high3_time")
         if (high3Time != nil){
-            tideEvents.append(TideEvent(day: self, type: "high", height: Day.getDouble(cursor, key: "high3_height")!, time: high3Time!))
+            tideEvents.append(TideEvent(day: self, type: "high", height: Day.getDouble(cursor, key: "high3_height")!, time: normaliseDate(high3Time!)))
         }
         
         self.sunrise = normaliseDate(sunrise)

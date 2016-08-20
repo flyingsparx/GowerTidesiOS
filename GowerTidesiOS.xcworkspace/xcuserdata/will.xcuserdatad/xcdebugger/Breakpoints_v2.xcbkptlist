@@ -105,11 +105,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GowerTidesiOS/PageItemController.swift"
-            timestampString = "492900364.578223"
+            timestampString = "493395462.350737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "88"
-            endingLineNumber = "88"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "updateUI()"
             landmarkType = "5">
          </BreakpointContent>
@@ -121,11 +121,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GowerTidesiOS/PageItemController.swift"
-            timestampString = "492900364.578223"
+            timestampString = "493395462.350737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "125"
-            endingLineNumber = "125"
+            startingLineNumber = "130"
+            endingLineNumber = "130"
             landmarkName = "updateUI()"
             landmarkType = "5">
          </BreakpointContent>
@@ -137,13 +137,76 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "GowerTidesiOS/PageItemController.swift"
-            timestampString = "492900364.578223"
+            timestampString = "493395462.350737"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "updateUI()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "GowerTidesiOS/TideEntryViewController.swift"
+            timestampString = "493324200.692761"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "13"
+            endingLineNumber = "13"
+            landmarkName = "TideEntryViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GowerTidesiOS.TideEntryViewController.coolview.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UIView&gt;"
+                  moduleName = "GowerTidesiOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/will/Project/GowerTidesiOS/GowerTidesiOS/TideEntryViewController.swift"
+                  timestampString = "493324227.702162"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "47">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GowerTidesiOS.TideEntryViewController.init (nibName : Swift.Optional&lt;Swift.String&gt;, bundle : Swift.Optional&lt;__ObjC.NSBundle&gt;) -&gt; GowerTidesiOS.TideEntryViewController"
+                  moduleName = "GowerTidesiOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/will/Project/GowerTidesiOS/GowerTidesiOS/TideEntryViewController.swift"
+                  timestampString = "493324227.70237"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "77">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "GowerTidesiOS.TideEntryViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;GowerTidesiOS.TideEntryViewController&gt;"
+                  moduleName = "GowerTidesiOS"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/will/Project/GowerTidesiOS/GowerTidesiOS/TideEntryViewController.swift"
+                  timestampString = "493324227.702562"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "13"
+                  endingLineNumber = "13"
+                  offsetFromSymbolStart = "37">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

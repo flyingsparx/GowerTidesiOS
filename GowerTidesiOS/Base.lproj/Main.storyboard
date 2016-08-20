@@ -49,13 +49,17 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mcv-n3-XX9">
-                                <rect key="frame" x="16" y="96" width="288" height="337"/>
+                                <rect key="frame" x="16" y="96" width="288" height="397"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f6T-Ct-aXD" customClass="LineChartView" customModule="Charts">
                                         <rect key="frame" x="0.0" y="0.0" width="288" height="209"/>
                                     </view>
+                                    <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLU-oU-joZ">
+                                        <rect key="frame" x="0.0" y="209" width="288" height="60"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IoR-0I-9zi">
-                                        <rect key="frame" x="0.0" y="209" width="288" height="128"/>
+                                        <rect key="frame" x="0.0" y="269" width="288" height="128"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rQO-RK-T3t">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="128"/>
@@ -162,6 +166,7 @@
                         <outlet property="graphView" destination="f6T-Ct-aXD" id="3r8-Ro-aAj"/>
                         <outlet property="sunriseLabel" destination="EN4-l9-joT" id="cne-gk-k5W"/>
                         <outlet property="sunsetLabel" destination="shn-Gs-aBA" id="r1o-11-jZW"/>
+                        <outlet property="tideTableView" destination="qLU-oU-joZ" id="zwK-F7-iBX"/>
                         <outlet property="untilSunsetLabel" destination="1ZV-QH-38l" id="0Yo-uC-N7K"/>
                         <outlet property="view" destination="Dxa-Cv-Rlz" id="6tG-mC-ibm"/>
                     </connections>

@@ -18,7 +18,7 @@ class PageItemController: UIViewController {
     @IBOutlet weak var sunsetLabel: UILabel!
     @IBOutlet weak var untilSunsetLabel: UILabel!
     @IBOutlet weak var graphView: LineChartView!
-    
+    @IBOutlet weak var tideTableView: UIView!
     
     // MARK: - Variables
     let dateFormatter = NSDateFormatter()
@@ -29,6 +29,11 @@ class PageItemController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
+        
+        tideTableView.addSubview(TideEntryView(event: day!.tideEvents[0], index: 0))
+        tideTableView.addSubview(TideEntryView(event: day!.tideEvents[1], index: 1))
+        tideTableView.addSubview(TideEntryView(event: day!.tideEvents[2], index: 2))
+        tideTableView.addSubview(TideEntryView(event: day!.tideEvents[3], index: 3))
     }
     
     func updateUI(){
