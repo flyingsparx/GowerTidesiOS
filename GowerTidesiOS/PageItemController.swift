@@ -30,10 +30,7 @@ class PageItemController: UIViewController {
         super.viewDidLoad()
         updateUI()
         
-        tideTableView.addSubview(TideEntryView(event: day!.tideEvents[0], index: 0))
-        tideTableView.addSubview(TideEntryView(event: day!.tideEvents[1], index: 1))
-        tideTableView.addSubview(TideEntryView(event: day!.tideEvents[2], index: 2))
-        tideTableView.addSubview(TideEntryView(event: day!.tideEvents[3], index: 3))
+        
     }
     
     func updateUI(){
@@ -83,6 +80,12 @@ class PageItemController: UIViewController {
         if ((day!.tomorrow) != nil){
             let firstTideTomorrow = day!.tomorrow!.tideEvents[0];
             coordinates.append((minsInDay + firstTideTomorrow.getMinutes(), firstTideTomorrow.height))
+        }
+        
+        var tide = 0;
+        while tide < day!.tideEvents.count {
+            tideTableView.addSubview(TideEntryView(event: day!.tideEvents[tide], index: tide))
+            tide = tide + 1
         }
         
         var maxHeight = 0.0;

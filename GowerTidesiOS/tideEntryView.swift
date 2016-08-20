@@ -14,7 +14,7 @@ class TideEntryView: UIView {
     
     init(event: TideEvent, index: Int) {
         self.tideEvent = event
-        super.init(frame: CGRect(x: 85 * index, y: 10, width: 80, height: 50))
+        super.init(frame: CGRect(x: 85 * index, y: 15, width: 80, height: 45))
         
         let timeFormatter = NSDateFormatter()
         timeFormatter.dateFormat = "HH:mm"
@@ -23,7 +23,7 @@ class TideEntryView: UIView {
         layer.cornerRadius = 10.0
         backgroundColor = UIColor.whiteColor()
         
-        let tideType = UILabel(frame: CGRect(x: 27, y: 6, width: 75, height: 17))
+        let tideType = UILabel(frame: CGRect(x: 30, y: 6, width: 75, height: 17))
         tideType.text = event.type.uppercaseString
         tideType.textColor = UIColor.grayColor()
         tideType.font = tideType.font.fontWithSize(14)
@@ -35,14 +35,16 @@ class TideEntryView: UIView {
         tideTime.text = timeFormatter.stringFromDate(event.time)
         tideTime.font = tideTime.font.fontWithSize(12)
         
-        let timeUntil = UILabel(frame:CGRect(x: 45, y: 25, width: 35, height: 10))
+        let timeUntil = UILabel(frame:CGRect(x: 40, y: 25, width: 40, height: 10))
         timeUntil.font = tideTime.font.fontWithSize(12)
         if event.day.isToday(){
             let now = NSDate()
             timeUntil.textColor = UIColor.greenColor()
+            var labelSign = "+"
             var untilComponents = NSCalendar.currentCalendar().components([.Hour, .Minute], fromDate: now, toDate: event.time, options: [])
             
             if now.earlierDate(event.time).isEqualToDate(event.time){
+                labelSign = "-"
                 timeUntil.textColor = UIColor.redColor()
                 untilComponents = NSCalendar.currentCalendar().components([.Hour, .Minute], fromDate: event.time, toDate: now, options: [])
             }
@@ -51,7 +53,7 @@ class TideEntryView: UIView {
             if mins < 10{
                 minString = "0" + String(mins)
             }
-            timeUntil.text = String(untilComponents.hour) + ":" + minString
+            timeUntil.text = labelSign + String(untilComponents.hour) + ":" + minString
         }
         else{
             timeUntil.hidden = true
