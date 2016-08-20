@@ -19,6 +19,7 @@ class PageItemController: UIViewController {
     @IBOutlet weak var untilSunsetLabel: UILabel!
     @IBOutlet weak var graphView: LineChartView!
     @IBOutlet weak var tideTableView: UIView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
     // MARK: - Variables
     let dateFormatter = NSDateFormatter()
@@ -29,7 +30,7 @@ class PageItemController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
-        
+        scrollView.contentSize = CGSize(width: tideTableView.frame.width, height: scrollView.frame.height)
         
     }
     
