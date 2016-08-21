@@ -33,7 +33,10 @@ class PageItemController: UIViewController {
         super.viewDidLoad()
         updateUI()
         scrollView.contentSize = CGSize(width: tideTableView.frame.width, height: scrollView.frame.height)
-        var updateTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("updateUI"), userInfo: nil, repeats: true)
+        if (day!.isToday()){
+            var updateTimer = NSTimer.scheduledTimerWithTimeInterval(60.0, target: self, selector: Selector("updateUI"), userInfo: nil, repeats: true)
+            
+        }
 
     }
     
