@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import Foundation
 
 class PageItemController: UIViewController {
     
@@ -25,13 +26,15 @@ class PageItemController: UIViewController {
     let dateFormatter = NSDateFormatter()
     var itemIndex: Int = 0
     var day: Day? = nil
+    var firstLoad = true
     
     // MARK: - View Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI()
         scrollView.contentSize = CGSize(width: tideTableView.frame.width, height: scrollView.frame.height)
-        
+        var updateTimer = NSTimer.scheduledTimerWithTimeInterval(5.0, target: self, selector: Selector("updateUI"), userInfo: nil, repeats: true)
+
     }
     
     func updateUI(){
@@ -173,7 +176,10 @@ class PageItemController: UIViewController {
         graphView.xAxis.labelPosition = .Bottom
         graphView.legend.enabled = false
         graphView.descriptionText = ""
-        graphView.animate(yAxisDuration: 1, easingOption: .EaseOutQuad)
+        if (firstLoad == true){
+            firstLoad = false
+            graphView.animate(yAxisDuration: 1, easingOption: .EaseOutQuad)
+        }
         
         graphView.xAxis.axisMinValue = 0
         graphView.xAxis.axisMaxValue = Double(minsInDay)
