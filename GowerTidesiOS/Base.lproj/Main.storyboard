@@ -36,35 +36,35 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jX-XE-9E6">
-                                <rect key="frame" x="36" y="28" width="248" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
-                                <color key="textColor" red="0.34456806282722519" green="0.34456806282722519" blue="0.34456806282722519" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8H-5y-hCA">
-                                <rect key="frame" x="36" y="59" width="248" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mcv-n3-XX9">
-                                <rect key="frame" x="16" y="0.0" width="288" height="465"/>
+                                <rect key="frame" x="16" y="40" width="288" height="471"/>
                                 <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Day" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2jX-XE-9E6">
+                                        <rect key="frame" x="0.0" y="0.0" width="288" height="32"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                        <color key="textColor" red="0.34456806282722519" green="0.34456806282722519" blue="0.34456806282722519" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A8H-5y-hCA">
+                                        <rect key="frame" x="0.0" y="32" width="288" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f6T-Ct-aXD" customClass="LineChartView" customModule="Charts">
-                                        <rect key="frame" x="0.0" y="0.0" width="288" height="209"/>
+                                        <rect key="frame" x="0.0" y="52" width="288" height="211"/>
                                     </view>
-                                    <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceHorizontal="YES" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gZ-n2-cJm">
-                                        <rect key="frame" x="0.0" y="209" width="288" height="128"/>
+                                    <scrollView autoresizesSubviews="NO" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9gZ-n2-cJm">
+                                        <rect key="frame" x="0.0" y="263" width="288" height="80"/>
                                         <subviews>
                                             <view autoresizesSubviews="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qLU-oU-joZ">
-                                                <rect key="frame" x="0.0" y="34" width="400" height="60"/>
+                                                <rect key="frame" x="0.0" y="10" width="400" height="60"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             </view>
                                         </subviews>
                                     </scrollView>
                                     <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IoR-0I-9zi">
-                                        <rect key="frame" x="0.0" y="337" width="288" height="128"/>
+                                        <rect key="frame" x="0.0" y="343" width="288" height="128"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rQO-RK-T3t">
                                                 <rect key="frame" x="0.0" y="0.0" width="144" height="128"/>
@@ -155,14 +155,9 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.85602094240000004" green="0.85602094240000004" blue="0.85602094240000004" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93312336386596861" green="0.93312336386596861" blue="0.93312336386596861" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="A8H-5y-hCA" secondAttribute="trailing" constant="20" id="3tU-Eo-Gul"/>
-                            <constraint firstItem="A8H-5y-hCA" firstAttribute="leading" secondItem="Dxa-Cv-Rlz" secondAttribute="leadingMargin" constant="20" id="OgI-r4-xld"/>
-                            <constraint firstItem="2jX-XE-9E6" firstAttribute="leading" secondItem="Dxa-Cv-Rlz" secondAttribute="leadingMargin" constant="20" id="bR7-Rx-bZ4"/>
-                            <constraint firstItem="Mcv-n3-XX9" firstAttribute="top" secondItem="A8H-5y-hCA" secondAttribute="bottom" constant="10" id="hd3-Pa-Xjc"/>
-                            <constraint firstItem="A8H-5y-hCA" firstAttribute="top" secondItem="2jX-XE-9E6" secondAttribute="bottom" constant="5" id="mZX-in-UaY"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="2jX-XE-9E6" secondAttribute="trailing" constant="20" id="nVr-I2-4DS"/>
+                            <constraint firstItem="Mcv-n3-XX9" firstAttribute="top" secondItem="Dxa-Cv-Rlz" secondAttribute="topMargin" constant="40" id="Y86-Qr-ZC0"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Mcv-n3-XX9" secondAttribute="trailing" id="tgI-2H-qpN"/>
                             <constraint firstItem="Mcv-n3-XX9" firstAttribute="leading" secondItem="Dxa-Cv-Rlz" secondAttribute="leadingMargin" id="wOG-JX-1l7"/>
                         </constraints>
