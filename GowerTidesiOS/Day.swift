@@ -20,7 +20,6 @@ class Day {
         let timeParseFormatter = NSDateFormatter()
         timeParseFormatter.dateFormat = "h:m a"
         timeParseFormatter.locale = NSLocale(localeIdentifier: "en_GB_POSIX")
-        
         self.date = date
         self.sunrise = Day.getDate(timeParseFormatter, cursor: cursor, key: "sunrise")!
         self.sunset = Day.getDate(timeParseFormatter, cursor: cursor, key: "sunset")!
@@ -122,7 +121,7 @@ class Day {
     // Get a date from a column in an input DB row cursor
     private class func getDate(timeParseFormatter: NSDateFormatter, cursor: Row, key: String) -> NSDate? {
         let dateExp = Expression<String>(key)
-        let dateStr = cursor[dateExp].stringByReplacingOccurrencesOfString(" BST", withString: "")
+        let dateStr = cursor[dateExp].stringByReplacingOccurrencesOfString(" BST", withString: "").stringByReplacingOccurrencesOfString(" GMT", withString: "")
         return timeParseFormatter.dateFromString(dateStr)
     }
     
